@@ -9,8 +9,8 @@ export function createElement(type, classList = [], id = false) {
   return newElement;
 }
 
-export function appendChildArray(target, childArray = []) {
-  childArray.forEach((child) => {
+export function appendChildren(target, ...children) {
+  children.forEach((child) => {
     target.appendChild(child);
   });
 }
