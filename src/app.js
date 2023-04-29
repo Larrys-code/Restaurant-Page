@@ -1,9 +1,4 @@
 import "./styles.css";
-import * as domMethod from "./domMethod";
+import homeTab from "./homeTab";
 
-const content = document.getElementById("content");
-domMethod.appendChildren(
-  content,
-  domMethod.createElement("div", ["test", "test4"]),
-  domMethod.createElement("div")
-);
+homeTab();

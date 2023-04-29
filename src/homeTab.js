@@ -1,18 +1,29 @@
 import * as domMethod from "./domMethod";
+import menuTab from "./menuTab";
+import aboutUsTab from "./aboutUsTab";
 
-export const content = document.getElementById("content");
-function insertHomeContent() {}
+const content = document.getElementById("content");
+function insertHomeContent() {
+  const contentBody = document.querySelector(".content-body");
+  contentBody.textContent = "";
+
+  const title = domMethod.createElement("h1");
+  const text = domMethod.createElement("p");
+  text.textContent = "blah blah home page blah";
+
+  domMethod.appendChildren(contentBody, title, text);
+}
 
 const pageList = [
-  { name: "Home", method: insertHomeContent },
-  { name: "Menu" },
-  { name: "About Us" },
+  { name: "Home", token: "home", method: insertHomeContent },
+  { name: "Menu", token: "menu", method: menuTab },
+  { name: "About Us", token: "about-us", method: aboutUsTab },
 ];
 
 function makePageShell() {
   const header = domMethod.createElement("div", "header");
   pageList.forEach((page) => {
-    const pageTab = domMethod.createElement("button", ["tab", `${page.name}`]);
+    const pageTab = domMethod.createElement("button", ["tab", `${page.token}`]);
     pageTab.textContent = `${page.name}`;
     pageTab.addEventListener("click", page.method);
     header.appendChild(pageTab);

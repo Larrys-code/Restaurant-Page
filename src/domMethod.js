@@ -1,8 +1,14 @@
-export function createElement(type, classList = [], id = false) {
+export function createElement(type, classes = [], id = false) {
   const newElement = document.createElement(type);
-  classList.forEach((className) => {
-    newElement.classList.add(className);
-  });
+  if (classes) {
+    let classArray = classes;
+    if (!Array.isArray(classes)) {
+      classArray = [classes];
+    }
+    classArray.forEach((className) => {
+      newElement.classList.add(className);
+    });
+  }
   if (id) {
     newElement.setAttribute("id", id);
   }
